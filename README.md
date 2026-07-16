@@ -1,23 +1,16 @@
 # Small Backend
 
 Simple task management API built with Express.
+Stores tasks in a postgres database
 
 ## Run instructions
 
-1. Install dependencies:
+1. Install dependencies and start the server:
    ```bash
-   npm install
-   ```
-2. Start the server:
-   ```bash
-   node index.js
-   ```
-   Or with:
-   ```
-   node .
+   docker compose up -d --build
    ```
 
-3. Open:
+2. Open:
    - API base URL: `http://localhost:8080`
    - Swagger docs: `http://localhost:8080/docs`
    - OpenAPI spec: `http://localhost:8080/openapi.json`
