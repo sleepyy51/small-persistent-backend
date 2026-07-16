@@ -84,7 +84,7 @@ app.post('/tasks', async (req, res) => {
     }
     try{
         await pool.query(
-            'insert into tasks (title, isDone) values ($1, $2)',
+            'insert into tasks (title, completed) values ($1, $2)',
             [title, isDone]
         );
 
@@ -134,7 +134,7 @@ app.put('/tasks/:id', async (req, res) => {
         }
 
         await pool.query(
-            'update tasks set title = $1, isDone = $2 where id = $3',
+            'update tasks set title = $1, completed = $2 where id = $3',
             [title, isDone, id]
         );
 
@@ -189,14 +189,14 @@ app.get('/search', async (req, res) =>{
     
     if(typeof(query) !== 'string' || query.trim() === ""){
         return res.status(400).json({
-            "error":"Query requiered"
+            "error":"Query required"
         });
     }
 
     try{
         const {rows} = await pool.query(
             'select * from tasks where title ilike $1',
-            [`$%{query}%`]
+            [`%${query}%`]
         );
 
         return res.status(200).json(rows);

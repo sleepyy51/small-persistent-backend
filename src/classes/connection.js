@@ -1,6 +1,4 @@
-import pg from 'pg'
-
-const { Pool } = pg;
+const { Pool } = require('pg');
 
 const pool = new Pool({
     host: process.env.DB_HOST,
@@ -10,4 +8,4 @@ const pool = new Pool({
     database: process.env.DB_NAME,
 });
 
-export default pool;
+module.exports = pool;
