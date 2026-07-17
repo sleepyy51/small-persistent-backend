@@ -88,7 +88,7 @@ app.post('/tasks', async (req, res) => {
             [title, isDone]
         );
 
-        return res.status(200).json({
+        return res.status(201).json({
             "message": "Task succesfully created"
         });
     }catch (err){
